@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        width: 100%;
+        height: 500px;
+        display: flex;
+    }
+
+    .a {
+        width: 300px;
+        height: 100%;
+        background-color: aqua;
+    }
+
+    .b {
+        flex: 1;
+        background-color: blue;
+        position: relative;
+    }
+
+    .c {
+        background-color: crimson;
+        position: relative;
+        width: 300px;
+        height: 300px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+
+<body>
+    <div class="box">
+        <div class="a"></div>
+        <div class="b">
+            <div class="c"></div>
+        </div>
+    </div>
+    <form action="" id="form">
+        用户名：<input type="text" id="ys">
+        密码：<input type="password" name="" id="pass">
+        <button id="box">登录</button>
+    </form>
+    <script>
+        var oys = document.querySelector("#ys")
+        var opass = document.querySelector("#pass")
+        var obox = document.querySelector("#box")
+        var oform = document.querySelector("#form")
+        obox.onclick = function () {
+            console.log(oys.value);
+            var obj = {
+                name: "",
+                pass: ""
+            }
+            obj.name = oys.value
+            obj.pass = opass.value
+            if (obj.ys || obj.pass == "") {
+                alert("请输入")
+            } else {
+                var str = JSON.stringify(obj)
+                localStorage.setItem(str, "true")
+            }
+            return false
+        }
+
+
+        var obj = {
+            name: "彭乐",
+            age: 18
+        }
+        for (key in obj) {
+
+
+        }
+
+
+
+
+
+
+        var array = [
+            {
+                id: 1,
+                name: "小明"
+            },
+            {
+                id: 2,
+                name: "小红"
+            }
+        ];
+        var keyMap = {
+            "id": "value",
+            "name": "label"
+        };
+        for (var i = 0; i < array.length; i++) {
+            var obj = array[i];
+            for (var key in obj) {
+                var newKey = keyMap[key];
+                console.log(keyMap[key]);
+
+                if (newKey) {
+                    obj[newKey] = obj[key];
+                    delete obj[key];
+                }
+            }
+            console.log(obj);
+
+        }
+        console.log(array);
+
+        let biu = 0;
+        for (var i = 0; i <= 10; i++) {
+            function name(a, b) {
+
+                return biu += a + b
+            }
+            var c = name(10, 20)
+        }
+        console.log(c);
+
+
+
+
+    </script>
+</body>
+
+</html>
