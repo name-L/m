@@ -14,5 +14,6 @@ module.exports = {
       }
     }
   },
+  publicPach:'./',
   lintOnSave: false // 关了eslint检查
 }
