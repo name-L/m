@@ -1,19 +1,19 @@
 module.exports = {
-  devServer: {
-    overlay: {
-      warnings: true,
-      errors: true
+    devServer: {
+        overlay: {
+            warnings: true,
+            errors: true
+        },
+        proxy: {
+            '/ajax': {
+                target: 'http://m.maoyan.com',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/lele': ''
+                }
+            }
+        },
+        baseUrl: './',
     },
-    proxy: {
-      '/ajax': {
-        target: 'http://m.maoyan.com',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/lele': ''
-        }
-      }
-    }
-  },
-  publicPach:'./',
-  lintOnSave: false // 关了eslint检查
+    lintOnSave: false // 关了eslint检查
 }
