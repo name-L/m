@@ -12,8 +12,8 @@ module.exports = {
                     '^/lele': ''
                 }
             }
-        },
-        baseUrl: './',
+        }
     },
+    publicPath: './',
     lintOnSave: false // 关了eslint检查
 }
