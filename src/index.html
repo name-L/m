@@ -48,7 +48,7 @@
     #tag {
         width: 498px;
         overflow: hidden;
-        background: green;
+        background: white;
         border: 1px solid #000;
         display: flex;
         justify-content: space-between;
@@ -57,7 +57,7 @@
     #tag li {
         list-style: none;
         margin-right: 0px;
-        color: white;
+        color: #000;
         padding: 5px 20px;
         text-align: center;
         cursor: pointer;
@@ -66,11 +66,12 @@
 
     #tag .current {
         color: #000;
-        background: #ccc;
+        background: white;
     }
 
-     .current + li {
-        border-radius: 50%;
+    .current+li {
+        border-radius: 0 0 0 20px;
+        background: red;
     }
 
     #tagContent div {
@@ -79,6 +80,11 @@
         border-top: none;
         height: 300px;
         display: none;
+    }
+
+    .aa {
+        border-radius: 0 0 20px 0;
+        background: red;
     }
 </style>
 
@@ -92,7 +98,7 @@
     <form action="" id="form">
         用户名：<input type="text" id="ys">
         密码：<input type="password" name="" id="pass">
-        <button id="box">登录</button>
+        <button id="box" type="submit">登录</button>
     </form>
     <div class="wrap">
         <ul id="tag">
@@ -117,6 +123,9 @@
                 for (var n = 0; n < len; n++) {
                     tag[n].className = "";
                     content[n].style.display = "none";
+                    if (this.index !== 0) {
+                        tag[this.index - 1].className = 'aa';
+                    }
                 }   //首先将全部的div隐藏
                 tag[this.index].className = "current";
                 content[this.index].style.display = "block";
@@ -132,17 +141,19 @@
         var obox = document.querySelector("#box")
         var oform = document.querySelector("#form")
         obox.onclick = function () {
-            console.log(oys.value);
+            console.log(oys.value, opass.value);
             var obj = {
                 name: "",
                 pass: ""
             }
             obj.name = oys.value
             obj.pass = opass.value
-            if (obj.ys || obj.pass == "") {
+            if (obj.name == "" || obj.pass == "") {
                 alert("请输入")
             } else {
                 var str = JSON.stringify(obj)
+                obj.name = '';
+                obj.pass = '';
                 localStorage.setItem(str, "true")
             }
             return false
