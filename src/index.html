@@ -34,6 +34,52 @@
         left: 50%;
         transform: translate(-50%, -50%);
     }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .wrap {
+        width: 500px;
+        margin: 10px auto;
+    }
+
+    #tag {
+        width: 498px;
+        overflow: hidden;
+        background: green;
+        border: 1px solid #000;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #tag li {
+        list-style: none;
+        margin-right: 0px;
+        color: white;
+        padding: 5px 20px;
+        text-align: center;
+        cursor: pointer;
+        width: 33.3%;
+    }
+
+    #tag .current {
+        color: #000;
+        background: #ccc;
+    }
+
+     .current + li {
+        border-radius: 50%;
+    }
+
+    #tagContent div {
+        width: 498px;
+        border: 1px solid #000;
+        border-top: none;
+        height: 300px;
+        display: none;
+    }
 </style>
 
 <body>
@@ -48,7 +94,39 @@
         密码：<input type="password" name="" id="pass">
         <button id="box">登录</button>
     </form>
+    <div class="wrap">
+        <ul id="tag">
+            <li class="current">标签一</li>
+            <li>标签二</li>
+            <li>标签三</li>
+        </ul>
+        <div id="tagContent">
+            <div> 内容一<br>内容一 </div>
+            <div> 内容二<br>内容二 </div>
+            <div> 内容三<br>内容三 </div>
+        </div>
+    </div>
     <script>
+        var tag = document.getElementById("tag").children; //获取Tag下的li，即Tag标签 
+        var content = document.getElementById("tagContent").children; //获取Tag标签对应的内容 
+        content[0].style.display = "block"; //默认显示第一个标签的内容 
+        var len = tag.length;
+        for (var i = 0; i < len; i++) {   //无论点击谁都能实现当前显示，其余隐藏
+            tag[i].index = i; //为何如此？（看下面解释） 
+            tag[i].onclick = function () {     //0级DOM的事件句柄注册
+                for (var n = 0; n < len; n++) {
+                    tag[n].className = "";
+                    content[n].style.display = "none";
+                }   //首先将全部的div隐藏
+                tag[this.index].className = "current";
+                content[this.index].style.display = "block";
+            }
+        }
+
+
+
+
+
         var oys = document.querySelector("#ys")
         var opass = document.querySelector("#pass")
         var obox = document.querySelector("#box")
