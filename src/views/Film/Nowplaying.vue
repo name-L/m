@@ -84,7 +84,7 @@ export default {
         var scrollHeight =
           document.documentElement.scrollHeight || document.body.scrollHeight
         // 滚动条到底部的条件
-        if (Math.ceil(scrollTop + windowHeight) === scrollHeight) {
+        if (Math.ceil(scrollTop + windowHeight) >= scrollHeight) {
           // 写后台加载数据的函数
           // let aa = JSON.parse(localStorage.getItem("vuex", "cityId")).city.cityId;
           http

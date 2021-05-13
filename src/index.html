@@ -112,6 +112,14 @@
             <div> 内容三<br>内容三 </div>
         </div>
     </div>
+    <div>
+        <input type="text" class="input">
+        <ul id="ulul">
+            <li>11</li>
+            <li>##</li>
+            <li>33</li>
+        </ul>
+    </div>
     <script>
         var tag = document.getElementById("tag").children; //获取Tag下的li，即Tag标签 
         var content = document.getElementById("tagContent").children; //获取Tag标签对应的内容 
@@ -160,6 +168,24 @@
         }
 
 
+        var input = document.querySelector('.input');
+        var ulul = document.querySelector('#ulul');
+        ulul.onclick = function (ev) {
+            var e = ev || window.event;
+            var target = e.target || e.srcElement;
+            if (target.nodeName == 'LI') {
+                input.value += target.innerHTML;
+                console.log(input.value.slice(input.value.length - 4, input.value.length -2) == target.innerHTML);
+                console.log(input.value.slice(input.value.length - 4, input.value.length -2));
+                if (input.value.length > 3) {
+                    if (input.value.slice(input.value.length - 4, input.value.length - 2) == target.innerHTML) {
+                        setTimeout(() => {
+                            input.value = input.value.slice(0, input.value.length-2)
+                        }, 500)
+                    }
+                }
+            }
+        }
         var obj = {
             name: "彭乐",
             age: 18
