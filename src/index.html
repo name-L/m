@@ -196,8 +196,15 @@
         }
 
 
+        function Car(aa){
+            this.aa = aa;
+        }
 
-
+        Car.prototype.name=function(){
+            alert(this.aa)
+        }
+        let cass = new Car(11);
+        console.log(cass.aa);
 
 
         var array = [
@@ -241,7 +248,9 @@
         console.log(c);
 
 
-
+        let arr1 = ['11', '26', '12', '66', '55', '44'];
+        let hh = '111'
+        console.log(Array.isArray(hh));
 
     </script>
 </body>
