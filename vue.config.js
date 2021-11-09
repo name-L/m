@@ -26,7 +26,6 @@ module.exports = {
     outputDir: "dist",//打包后的目录名称
     assetsDir: "static",//静态资源目录名称
     productionSourceMap: false,  //去掉打包的时候生成的map文件
-    lintOnSave: true,
     filenameHashing: false,
     lintOnSave: false, // 关了eslint检查
     devServer: {
