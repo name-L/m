@@ -120,6 +120,7 @@
             <li>33</li>
         </ul>
     </div>
+    <canvas id="c"></canvas>
     <script>
         var tag = document.getElementById("tag").children; //获取Tag下的li，即Tag标签 
         var content = document.getElementById("tagContent").children; //获取Tag标签对应的内容 
@@ -175,12 +176,12 @@
             var target = e.target || e.srcElement;
             if (target.nodeName == 'LI') {
                 input.value += target.innerHTML;
-                console.log(input.value.slice(input.value.length - 4, input.value.length -2) == target.innerHTML);
-                console.log(input.value.slice(input.value.length - 4, input.value.length -2));
+                console.log(input.value.slice(input.value.length - 4, input.value.length - 2) == target.innerHTML);
+                console.log(input.value.slice(input.value.length - 4, input.value.length - 2));
                 if (input.value.length > 3) {
                     if (input.value.slice(input.value.length - 4, input.value.length - 2) == target.innerHTML) {
                         setTimeout(() => {
-                            input.value = input.value.slice(0, input.value.length-2)
+                            input.value = input.value.slice(0, input.value.length - 2)
                         }, 500)
                     }
                 }
@@ -196,11 +197,11 @@
         }
 
 
-        function Car(aa){
+        function Car (aa) {
             this.aa = aa;
         }
 
-        Car.prototype.name=function(){
+        Car.prototype.name = function () {
             alert(this.aa)
         }
         let cass = new Car(11);
@@ -239,7 +240,7 @@
 
         let biu = 0;
         for (var i = 0; i <= 10; i++) {
-            function name(a, b) {
+            function name (a, b) {
 
                 return biu += a + b
             }
@@ -251,7 +252,80 @@
         let arr1 = ['11', '26', '12', '66', '55', '44'];
         let hh = '111'
         console.log(Array.isArray(hh));
+        function getmin (arr) {
+            if (Array.isArray(arr)) {
+                let min = arr[0];
+                let index = 0;
+                arr.forEach((item,i) => {
+                    if (min > item) {
+                        min = item
+                        index = i
+                    }
+                });
+                console.log(index);
+                return min
+            }
+        }
+        console.log(getmin([11, 44, 55, 77, 1]))
+        const xhr = new XMLHttpRequest();
+        xhr.open('get', 'https://www.baidu.com');
+        xhr.send()
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log(1111);
+            }
+        }
+    </script>
+    <script>
+        
+            var c = document.getElementById("c");
+            var ctx = c.getContext("2d");
 
+            //making the canvas full screen
+            c.height = window.innerHeight;
+            c.width = window.innerWidth;
+
+            //chinese characters - taken from the unicode charset
+            var chinese = "操你妈";
+            //converting the string into an array of single characters
+            chinese = chinese.split("");
+
+            var font_size = 10;
+            var columns = c.width / font_size; //number of columns for the rain
+            //an array of drops - one per column
+            var drops = [];
+            //x below is the x coordinate
+            //1 = y co-ordinate of the drop(same for every drop initially)
+            for (var x = 0; x < columns; x++)
+                drops[x] = 1;
+
+            //drawing the characters
+            function draw () {
+                //Black BG for the canvas
+                //translucent BG to show trail
+                ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+                ctx.fillRect(0, 0, c.width, c.height);
+
+                ctx.fillStyle = "#0F0"; //green text
+                ctx.font = font_size + "px arial";
+                //looping over drops
+                for (var i = 0; i < drops.length; i++) {
+                    //a random chinese character to print
+                    var text = chinese[Math.floor(Math.random() * chinese.length)];
+                    //x = i*font_size, y = value of drops[i]*font_size
+                    ctx.fillText(text, i * font_size, drops[i] * font_size);
+
+                    //sending the drop back to the top randomly after it has crossed the screen
+                    //adding a randomness to the reset to make the drops scattered on the Y axis
+                    if (drops[i] * font_size > c.height && Math.random() > 0.975)
+                        drops[i] = 0;
+
+                    //incrementing Y coordinate
+                    drops[i]++;
+                }
+            }
+
+            setInterval(draw, 50);
     </script>
 </body>
 
