@@ -35,7 +35,8 @@ export default {
     //   axios.post('/auth2_test/authc/oidc/login').then(res=>{
     //       console.log(res);
     //   })
-        axios.get('/ajax/topRatedMovies?token=&optimus_uuid=25700D80179111ECAAB39F22595BA874CB0E230AEAEF4469A231595F97BC2B23&optimus_risk_level=71&optimus_code=10').then(res => {
+        axios.get(`/ajax/topRatedMovies?token=&optimus_uuid=25700D80179111ECAAB39F22595BA87
+        4CB0E230AEAEF4469A231595F97BC2B23&optimus_risk_level=71&optimus_code=10`).then(res => {
             console.log(res);
         });
         http

@@ -2,7 +2,14 @@
   <div class="fixedBtn" id="fixedBtn" @scroll="scrollaa">
     <div class="theFilm">{{name}}</div>
     <div class="pos">
-      <router-link  v-for="(item,index) in data" :key="index" :to="item.path" tag="li" active-class="color">{{item.name}}</router-link>
+      <router-link
+        v-for="(item,index) in data"
+        :key="index" :to="item.path"
+        tag="li"
+        active-class="color"
+      >
+        {{item.name}}
+      </router-link>
       <!-- <div
         v-for="(item,index) in data"
         :key="index"

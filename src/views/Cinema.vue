@@ -16,7 +16,14 @@
         </div>
         <div class="area" v-show="show">
             <ul>
-                <li v-for="data in arealist" :key="data" @click="handclick(data)" :class="data==current?'active':''">{{data}}</li>
+                <li
+                  v-for="data in arealist"
+                  :key="data"
+                  @click="handclick(data)"
+                  :class="data==current?'active':''"
+                >
+                  {{data}}
+                </li>
             </ul>
         </div>
         <div class="content">
@@ -33,7 +40,7 @@
 <script>
 // import http from "@/util/http";
 import item from './cimen/ciment';
-import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'; // mapState是vuex提供的切割函数
+import { mapState, mapMutations, mapActions } from 'vuex'; // mapState是vuex提供的切割函数
 export default {
     data () {
         return {
