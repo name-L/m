@@ -1,19 +1,19 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 // import http from "@/util/http";
-import cinema from './module/cimema'
-import tabber from './module/tabber'
-import city from './module/city'
-import createPersistedState from 'vuex-persistedstate'
-Vue.use(Vuex)
+import cinema from './module/cimema';
+import tabber from './module/tabber';
+import city from './module/city';
+import createPersistedState from 'vuex-persistedstate';
+Vue.use(Vuex);
 
 export default new Vuex.Store({
-  plugins: [createPersistedState()],
-  state: {
+    plugins: [createPersistedState()],
+    state: {
     // istabbar: true,
     // datalist: []
-  },
-  mutations: {
+    },
+    mutations: {
     // show() {
     //   this.state.istabbar = false
     // },
@@ -25,8 +25,8 @@ export default new Vuex.Store({
     //   this.state.datalist = data
 
     // }
-  },
-  actions: {
+    },
+    actions: {
     // 异步处理的地方
     // getaction(store) {
     //   http
@@ -42,17 +42,17 @@ export default new Vuex.Store({
     //       store.commit('setlist', res.data.data.cinemas)
     //     });
     // }
-  },
-  modules: {
+    },
+    modules: {
     // 合并区域
-    cinema,
-    tabber,
-    city
-  },
-  // 对上面的全局状态进行数据处理  类似于vue中的计算属性
-  getters: {
+        cinema,
+        tabber,
+        city
+    },
+    // 对上面的全局状态进行数据处理  类似于vue中的计算属性
+    getters: {
     // topDatolist(state) {
     //   return state.datalist.slice(0, 5);
     // }
-  }
-})
+    }
+});

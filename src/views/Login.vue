@@ -5,11 +5,11 @@
 </template>
 <script>
 export default {
-  methods: {
-    handclick () {
-      localStorage.setItem('token', JSON.stringify({ isLogin: true }))
-      this.$router.push('/center')
+    methods: {
+        handclick () {
+            localStorage.setItem('token', JSON.stringify({ isLogin: true }));
+            this.$router.push('/center');
+        }
     }
-  }
-}
+};
 </script>

@@ -15,52 +15,52 @@
 </template>
 <script>
 export default {
-  props: ['name'],
-  data () {
-    return {
-      current: '',
-      data: [
-        {
-          name: '正在热映',
-          path: '/film/nowplaying'
-        },
-        {
-          name: '即将上映',
-          path: '/film/comingsoon'
-        }
-      ],
-      fixed: false
-    }
-  },
-  mounted () {
-    window.addEventListener('scroll', this.fixedActiveBtn)
-  },
-  methods: {
+    props: ['name'],
+    data () {
+        return {
+            current: '',
+            data: [
+                {
+                    name: '正在热映',
+                    path: '/film/nowplaying'
+                },
+                {
+                    name: '即将上映',
+                    path: '/film/comingsoon'
+                }
+            ],
+            fixed: false
+        };
+    },
+    mounted () {
+        window.addEventListener('scroll', this.fixedActiveBtn);
+    },
+    methods: {
     // discoloration(index,path) {
     //   this.current = index;
     //   this.$router.push(path)
     // },
-    scrollaa () {
-      console.log('子组件触发')
-      // this.$emit("getData", this.current);
-    },
-    fixedActiveBtn () {
-      var fixedEle = document.getElementById('fixedBtn')
-      var scrollTop =
+        scrollaa () {
+            console.log('子组件触发');
+            // this.$emit("getData", this.current);
+        },
+        fixedActiveBtn () {
+            var fixedEle = document.getElementById('fixedBtn');
+            var scrollTop =
         window.pageYOffset ||
         document.documentElement.scrollTop ||
-        document.body.scrollTop
-      if (scrollTop >= 200) {
-        fixedEle.style.display = 'block'
-      } else {
-        fixedEle.style.display = 'none'
-      }
+        document.body.scrollTop;
+            if (scrollTop >= 200) {
+                fixedEle.style.display = 'block';
+            } else {
+                fixedEle.style.display = 'none';
+            }
+        }
+    },
+    beforeDestroy () {
+        window.removeEventListener('scroll', this.fixedActiveBtn, false);
     }
-  },
-  beforeDestroy () {
-    window.removeEventListener('scroll', this.fixedActiveBtn, false)
-  }
-}
+};
 </script>
 <style lang="scss" scoped>
 #fixedBtn {

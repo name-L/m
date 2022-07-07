@@ -1,4 +1,4 @@
-import http from '@/util/http'
+import http from '@/util/http';
 const module = {
     namespaced: true,
     state: {
@@ -6,8 +6,8 @@ const module = {
     },
     mutations: {
         setlist (state, data) {
-            console.log(data)
-            state.datalist = data
+            console.log(data);
+            state.datalist = data;
         }
     },
     actions: {
@@ -20,15 +20,15 @@ const module = {
                     }
                 })
                 .then(res => {
-                    console.log(res.data)
-                    store.commit('setlist', res.data.data.cinemas)
-                })
+                    console.log(res.data);
+                    store.commit('setlist', res.data.data.cinemas);
+                });
         }
     },
     getters: {
         topDatolist (state) {
-            return state.datalist.slice(0, 5)
+            return state.datalist.slice(0, 5);
         }
     }
-}
-export default module
+};
+export default module;

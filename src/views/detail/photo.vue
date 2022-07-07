@@ -10,13 +10,13 @@
 </template>
 <script>
 export default {
-  props: ['list'],
-  methods: {
-    photos (index) {
-      this.$emit('through', index)
+    props: ['list'],
+    methods: {
+        photos (index) {
+            this.$emit('through', index);
+        }
     }
-  }
-}
+};
 </script>
 <style lang="scss">
 .chaer {

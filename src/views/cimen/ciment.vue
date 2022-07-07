@@ -9,7 +9,7 @@
 <script>
 export default {
     props: ['data']
-}
+};
 </script>
 <style lang="scss" scoped>
 div {

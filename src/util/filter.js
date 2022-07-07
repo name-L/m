@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue from 'vue';
 Vue.filter('filterActor', function (el) {
-  return el.map(item => item.name).join(' ')
-})
+    return el.map(item => item.name).join(' ');
+});

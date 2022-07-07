@@ -9,13 +9,13 @@
 </template>
 <script>
 export default {
-  props: ['name'],
-  methods: {
-    back () {
-      this.$emit('back')
+    props: ['name'],
+    methods: {
+        back () {
+            this.$emit('back');
+        }
     }
-  }
-}
+};
 </script>
 <style lang="scss">
 .titl {

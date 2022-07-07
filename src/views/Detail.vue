@@ -57,90 +57,90 @@
   </div>
 </template>
 <script>
-import http from '@/util/http'
-import moment from 'moment'
-import Vue from 'vue'
-import { Dialog, ImagePreview } from 'vant'
-import mtitle from '@/components/titel'
-import photo from '@/views/detail/photo'
-import swiper from '@/components/Swiper'
+import http from '@/util/http';
+import moment from 'moment';
+import Vue from 'vue';
+import { Dialog, ImagePreview } from 'vant';
+import mtitle from '@/components/titel';
+import photo from '@/views/detail/photo';
+import swiper from '@/components/Swiper';
 // 局部引入指令
 // import  '@/util/directive'
 // 全局注册
-Vue.use(Dialog)
+Vue.use(Dialog);
 Vue.filter('dataFilter', function (data) {
-  return moment(data * 1000).format('YYYY-MM-DD')
-})
+    return moment(data * 1000).format('YYYY-MM-DD');
+});
 export default {
-  data () {
-    return {
-      filminfo: null,
-      isActive: true,
-      phoutshow: false
-    }
-  },
-  components: {
-    swiper, //  局部注册swiper组件
-    mtitle,
-    photo
-  },
-  methods: {
-    back () {
-      this.$router.back()
+    data () {
+        return {
+            filminfo: null,
+            isActive: true,
+            phoutshow: false
+        };
     },
-    // 组件隐藏
-    hide () {
-      this.phoutshow = false
+    components: {
+        swiper, //  局部注册swiper组件
+        mtitle,
+        photo
     },
-    // 图片预览
-    preview (index) {
-      ImagePreview({
-        images: this.filminfo.photos,
-        startPosition: index,
-        closeable: true,
-        closeIconPosition: 'top-left',
-        onClose () {
-          // do something
+    methods: {
+        back () {
+            this.$router.back();
+        },
+        // 组件隐藏
+        hide () {
+            this.phoutshow = false;
+        },
+        // 图片预览
+        preview (index) {
+            ImagePreview({
+                images: this.filminfo.photos,
+                startPosition: index,
+                closeable: true,
+                closeIconPosition: 'top-left',
+                onClose () {
+                    // do something
+                }
+            });
+        },
+        phout () {
+            this.phoutshow = true;
         }
-      })
     },
-    phout () {
-      this.phoutshow = true
+    beforeDestroy () {
+        window.onscroll = null;
+    },
+    mounted () {
+        http
+            .request({
+                url: `/gateway?filmId=${this.$route.params.Id}&k=7481140`,
+                headers: {
+                    'X-Host': 'mall.film-ticket.film.info'
+                }
+            })
+            .then(res => {
+                this.filminfo = res.data.data.film;
+                console.log(this.filminfo);
+            });
+    },
+    beforeMount () {
+        Dialog.confirm({
+            // title: "该影片目前没有排期，到首页看其他电影吧",
+            message: '该影片目前没有排期，到首页看其他\n电影吧',
+            cancelButtonText: '拒绝',
+            confirmButtonText: '同意',
+            confirmButtonColor: 'orange'
+        })
+            .then(() => {
+                // on confirm
+                this.$router.back();
+            })
+            .catch(() => {
+                // on cancel
+            });
     }
-  },
-  beforeDestroy () {
-    window.onscroll = null
-  },
-  mounted () {
-    http
-      .request({
-        url: `/gateway?filmId=${this.$route.params.Id}&k=7481140`,
-        headers: {
-          'X-Host': 'mall.film-ticket.film.info'
-        }
-      })
-      .then(res => {
-        this.filminfo = res.data.data.film
-        console.log(this.filminfo)
-      })
-  },
-  beforeMount () {
-    Dialog.confirm({
-      // title: "该影片目前没有排期，到首页看其他电影吧",
-      message: '该影片目前没有排期，到首页看其他\n电影吧',
-      cancelButtonText: '拒绝',
-      confirmButtonText: '同意',
-      confirmButtonColor: 'orange'
-    })
-      .then(() => {
-        // on confirm
-        this.$router.back()
-      })
-      .catch(() => {
-        // on cancel
-      })
-  }
-}
+};
 </script>
 <style lang="scss" scoped>
 h4 {

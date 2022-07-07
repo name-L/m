@@ -1,15 +1,15 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
+import store from './store';
 // 全局引入过滤器
 // import '@/util/filter'
 // 全局引入指令
-import '@/util/directive'
-Vue.config.productionTip = false
+import '@/util/directive';
+Vue.config.productionTip = false;
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+    router,
+    store,
+    render: h => h(App)
+}).$mount('#app');

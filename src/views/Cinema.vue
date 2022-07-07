@@ -32,28 +32,28 @@
 </template>
 <script>
 // import http from "@/util/http";
-import item from './cimen/ciment'
-import { mapState, mapGetters, mapMutations, mapActions } from 'vuex' // mapState是vuex提供的切割函数
+import item from './cimen/ciment';
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'; // mapState是vuex提供的切割函数
 export default {
     data () {
         return {
             // datalist: [],
             show: false,
             current: '全城'
-        }
+        };
     },
     components: {
         item
     },
     methods: {
         handclick (data) {
-            this.current = data
-            this.show = false
+            this.current = data;
+            this.show = false;
         },
         haindshow () {
-            this.setlist([])
+            this.setlist([]);
             // this.$store.commit('cinema/setlist',[])
-            this.$router.push('/cccc')
+            this.$router.push('/cccc');
         },
         ...mapMutations('cinema', ['setlist']),
         ...mapActions('cinema', ['getaction'])
@@ -62,28 +62,28 @@ export default {
         ...mapState('cinema', ['datalist']),
         ...mapState('city', ['cityName', 'cityId']),
         arealist () {
-            console.log(this.datalist)
+            console.log(this.datalist);
             var newarr = this.$store.state.cinema.datalist.map(
                 (item) => item.districtName
-            )
-            var newlist = ['全城', ...new Set(newarr)]
-            return newlist
+            );
+            var newlist = ['全城', ...new Set(newarr)];
+            return newlist;
         },
         compdatalist () {
             if (this.current === '全城') {
-                return this.$store.state.cinema.datalist
+                return this.$store.state.cinema.datalist;
             }
             return this.$store.state.cinema.datalist.filter(
                 (item) => item.districtName === this.current
-            )
+            );
         }
     },
     mounted () {
         // new BScroll(".content")
-        console.log(this.$store.state)
+        console.log(this.$store.state);
         if (this.$store.state.cinema.datalist.length === 0) {
             //   this.$store.dispatch('cinema/getaction', this.$store.state.city.cityId)
-            this.getaction(this.cityId)
+            this.getaction(this.cityId);
         }
 
         // http
@@ -98,7 +98,7 @@ export default {
         //     this.datalist = res.data.data.cinemas;
         //   });
     }
-}
+};
 </script>
 <style lang="scss" scoped>
 .title {

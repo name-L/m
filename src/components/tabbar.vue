@@ -15,28 +15,28 @@
 </template>
 <script>
 export default {
-  data () {
-    return {
-      navlist: [
-        {
-          path: '/film',
-          text: '电影',
-          iconfont: 'icon-iconfontplay2'
-        },
-        {
-          path: '/cinema',
-          text: '影院',
-          iconfont: 'icon-viewgallery'
-        },
-        {
-          path: '/center',
-          text: '我的',
-          iconfont: 'icon-account'
-        }
-      ]
+    data () {
+        return {
+            navlist: [
+                {
+                    path: '/film',
+                    text: '电影',
+                    iconfont: 'icon-iconfontplay2'
+                },
+                {
+                    path: '/cinema',
+                    text: '影院',
+                    iconfont: 'icon-viewgallery'
+                },
+                {
+                    path: '/center',
+                    text: '我的',
+                    iconfont: 'icon-account'
+                }
+            ]
+        };
     }
-  }
-}
+};
 </script>
 <style lang="scss" scoped>
 .Discoloration {

@@ -8,19 +8,19 @@
   </div>
 </template>
 <script>
-import tabbar from '@/components/tabbar'
-import { mapState } from 'vuex'
+import tabbar from '@/components/tabbar';
+import { mapState } from 'vuex';
 export default {
-  mounted () {
-    console.log(this.istabbar)
-  },
-  computed: {
-    ...mapState('tabber', ['istabbar'])
-  },
-  components: {
-    tabbar
-  }
-}
+    mounted () {
+        console.log(this.istabbar);
+    },
+    computed: {
+        ...mapState('tabber', ['istabbar'])
+    },
+    components: {
+        tabbar
+    }
+};
 </script>
 <style lang="scss">
 * {

@@ -9,19 +9,19 @@
   </div>
 </template>
 <script>
-import Vue from 'vue'
-import { Button } from 'vant'
+import Vue from 'vue';
+import { Button } from 'vant';
 
-Vue.use(Button)
+Vue.use(Button);
 export default {
-  // 路由钩子函数
-  beforeRouteEnter (to, from, next) {
+    // 路由钩子函数
+    beforeRouteEnter (to, from, next) {
     // ...
-    if (localStorage.getItem('token')) {
-      next()
-    } else {
-      next('/login')
+        if (localStorage.getItem('token')) {
+            next();
+        } else {
+            next('/login');
+        }
     }
-  }
-}
+};
 </script>

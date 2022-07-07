@@ -15,50 +15,50 @@
   </div>
 </template>
 <script>
-import http from '@/util/http'
-import swiper from '@/components/Swiper'
-import { mapState } from 'vuex'
-import axios from 'axios'
+import http from '@/util/http';
+import swiper from '@/components/Swiper';
+import { mapState } from 'vuex';
+import axios from 'axios';
 export default {
-  data () {
-    return {
-      looplist: []
-    }
-  },
-  components: {
-    swiper //  局部注册swiper组件
-  },
-  computed: {
-    ...mapState('city', ['cityId'])
-  },
-  mounted () {
+    data () {
+        return {
+            looplist: []
+        };
+    },
+    components: {
+        swiper //  局部注册swiper组件
+    },
+    computed: {
+        ...mapState('city', ['cityId'])
+    },
+    mounted () {
     //   axios.post('/auth2_test/authc/oidc/login').then(res=>{
     //       console.log(res);
     //   })
-      axios.get('/ajax/topRatedMovies?token=&optimus_uuid=25700D80179111ECAAB39F22595BA874CB0E230AEAEF4469A231595F97BC2B23&optimus_risk_level=71&optimus_code=10').then(res=>{
-          console.log(res);
-      })
-    http
-      .request({
-        url: `/gateway?type=2&cityId=${this.cityId}&k=1231926`,
-        headers: {
-          'X-Host': 'mall.cfg.common-banner'
-        }
-      })
-      .then(res => {
-        console.log(res.data)
-        var obj = {
-          bannerId: 1008611,
-          imgUrl:
+        axios.get('/ajax/topRatedMovies?token=&optimus_uuid=25700D80179111ECAAB39F22595BA874CB0E230AEAEF4469A231595F97BC2B23&optimus_risk_level=71&optimus_code=10').then(res => {
+            console.log(res);
+        });
+        http
+            .request({
+                url: `/gateway?type=2&cityId=${this.cityId}&k=1231926`,
+                headers: {
+                    'X-Host': 'mall.cfg.common-banner'
+                }
+            })
+            .then(res => {
+                console.log(res.data);
+                var obj = {
+                    bannerId: 1008611,
+                    imgUrl:
             'https://pic.maizuo.com/usr/movie/f046c5d6b2c397a8194ab14dc439d7dd.jpg?x-oss-process=image/quality,Q_70'
-        }
-        // this.looplist = res.data.data;
-        if (res.data.data) {
-          this.looplist = [...res.data.data, obj]
-        }
-      })
-  }
-}
+                };
+                // this.looplist = res.data.data;
+                if (res.data.data) {
+                    this.looplist = [...res.data.data, obj];
+                }
+            });
+    }
+};
 </script>
 <style lang="scss" scoped>
 .swiper-slide {
