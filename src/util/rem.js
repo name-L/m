@@ -1,5 +1,5 @@
 // 基准大小
-const baseSize = 14;
+const baseSize = 16;
 
 // 设置 rem 函数
 function setRem () {
@@ -7,7 +7,7 @@ function setRem () {
     const scale = document.documentElement.clientWidth / 1920;
     // 设置页面根节点字体大小
     if (document.documentElement.clientWidth <= 760) {
-        document.documentElement.style.fontSize = 14 + 'px';
+        document.documentElement.style.fontSize = 16 + 'px';
     } else {
         document.documentElement.style.fontSize = (baseSize * Math.min(scale, 10)) + 'px';
     }
@@ -19,3 +19,15 @@ setRem();
 window.onresize = function () {
     setRem();
 };
+// (function (doc, win) {
+//     var docEl = doc.documentElement;
+//     var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+//     var recalc = function () {
+//         var clientWidth = docEl.clientWidth;
+//         if (!clientWidth) return;
+//         docEl.style.fontSize = 16 * (clientWidth / 320) + 'px';
+//     };
+//     if (!doc.addEventListener) return;
+//     win.addEventListener(resizeEvt, recalc, false);
+//     doc.addEventListener('DOMContentLoaded', recalc, false);
+// })(document, window);
